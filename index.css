@@ -1,0 +1,15 @@
+body {
+   background-color: 
+   linear-gradient(
+    180deg, 
+    #42B6C5 0%, 
+    #56CAE9 34.62%, 
+    #1FBFF8 64.42%, 
+    #055D7D 97.12%
+    );
+
+}
+
+.nav {
+    background-color:"rgb(255, 99, 71, 0.5)" ;
+}

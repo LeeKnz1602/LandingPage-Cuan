@@ -1,5 +1,6 @@
 import { Box, Burger, Button, Drawer, Flex, Group } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
+import classes from "../../styles/login.module.css";
 
 const links = ['ABOUT','HOW IT WORKS','FEATURES','TESTIMONIALS','FAQ'];
 
@@ -14,14 +15,14 @@ export function NavigationPage() {
         bg="rgba(0, 0, 0, .3)"
         justify="flex-end"
         align="flex-end"
-        direction="row"
+        direction="row" 
         wrap="wrap"
         px="md"
     >       
         {isMobile ? (
           <Burger opened={opened} onClick={toggle} />
         ) : (
-          <Group >
+          <Group className={classes.nav} >
             {links.map((link) => (
               <Button color='white' variant="subtle" key={link}>
                 {link}
