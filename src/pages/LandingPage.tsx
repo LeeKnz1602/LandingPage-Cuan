@@ -1,79 +1,100 @@
-import { Button, Container, Grid, Group, Image, Paper, Text, Title, Box } from '@mantine/core';
-import { Link } from 'react-router-dom';
+import { Box, Flex, Grid, Button, Text, Paper, Image, Container } from '@mantine/core';
 
 function LandingPage() {
   return (
-    <>
-      {/* Navbar: Menggunakan Box sebagai wrapper dengan background */}
-      <Box bg="blue.7" py="md">
+    <Box>
+      {/* Hero Section */}
+      <Box bg="blue.1" py="xl">
         <Container>
-          <Group justify="space-between">
-            <Title order={3} c="white">MyBrand</Title>
-            <Group>
-              <Button variant="subtle" c="white">Home</Button>
-              <Button variant="subtle" c="white">Features</Button>
-              <Button variant="subtle" c="white" component={Link} to="/about">Contact</Button>
-            </Group>
-          </Group> {/* Tambahkan closing tag ini */}
-        </Container>
-      </Box>
-
-      {/* Hero Section: Grid dengan 2 kolom responsif */}
-      <Box bg="gray.0" py="xl">
-        <Container>
-          <Grid gutter="lg">
-            <Grid.Col span={{ base: 12, md: 6 }}> {/* Kolom teks: Full width di mobile, setengah di desktop */}
-              <Title order={1}>Selamat Datang di Landing Page Kami</Title>
-              <Text size="lg" mt="md">
-                Ini adalah contoh landing page sederhana menggunakan Mantine. Kombinasi Grid, Col, dan Box membuat layout fleksibel dan responsif.
+          <Grid align="center">
+            <Grid.Col span={{ base: 12, md: 6 }}>
+              <Text fw={900} fz={{ base: 32, md: 48 }}>
+                Selamat Datang di <span style={{ color: '#228be6' }}>Produk Hebat</span>
               </Text>
-              <Button variant="filled" color="blue" mt="lg">Mulai Sekarang</Button>
+              <Text fz="lg" mt="md" mb="xl" c="dimmed">
+                Solusi modern untuk kebutuhan Anda, desain responsif dan fitur lengkap untuk bisnis masa kini.
+              </Text>
+              <Button size="lg">Coba Gratis Sekarang</Button>
             </Grid.Col>
-            <Grid.Col span={{ base: 12, md: 6 }}> {/* Kolom gambar */}
-              <Image src="https://via.placeholder.com/600x400" alt="Hero Image" radius="md" />
-            </Grid.Col>
-          </Grid>
-        </Container>
-      </Box>
-
-      {/* Features Section: Grid dengan 3 kolom cards, masing-masing wrapped Paper (ganti dari Box) */}
-      <Box py="xl">
-        <Container>
-          <Title order={2} ta="center" mb="lg">Fitur Utama</Title>
-          <Grid gutter="md">
-            <Grid.Col span={{ base: 12, sm: 4 }}> {/* Responsif: 1 kolom di mobile, 3 di desktop */}
-              <Paper bg="white" p="md" shadow="sm" radius="md">
-                <Title order={4}>Fitur 1</Title>
-                <Text>Deskripsi fitur pertama yang menarik.</Text>
-              </Paper>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, sm: 4 }}>
-              <Paper bg="white" p="md" shadow="sm" radius="md">
-                <Title order={4}>Fitur 2</Title>
-                <Text>Deskripsi fitur kedua yang inovatif.</Text>
-              </Paper>
-            </Grid.Col>
-            <Grid.Col span={{ base: 12, sm: 4 }}>
-              <Paper bg="white" p="md" shadow="sm" radius="md">
-                <Title order={4}>Fitur 3</Title>
-                <Text>Deskripsi fitur ketiga yang berguna.</Text>
-              </Paper>
+            <Grid.Col span={{ base: 12, md: 6 }}>
+              <Image
+                radius="md"
+                src="https://dummyimage.com/400x300/228be6/fff&text=Ilustrasi"
+                alt="Ilustrasi produk"
+                w="100%"
+              />
             </Grid.Col>
           </Grid>
         </Container>
       </Box>
 
-      {/* Footer: Box sederhana dengan Grid untuk alignment */}
-      <Box bg="dark.7" py="md">
+      {/* Features Section */}
+      <Container py="xl">
+        <Text ta="center" fw={700} fz="xl" mb="md">
+          Kenapa Pilih Kami?
+        </Text>
+        <Grid>
+          <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
+            <Paper p="md" shadow="xs" ta="center">
+              <Text fw={500}>Fitur Unggulan 1</Text>
+              <Text c="dimmed" fz="sm">Deskripsi singkat fitur 1.</Text>
+            </Paper>
+          </Grid.Col>
+          <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
+            <Paper p="md" shadow="xs" ta="center">
+              <Text fw={500}>Fitur Unggulan 2</Text>
+              <Text c="dimmed" fz="sm">Deskripsi singkat fitur 2.</Text>
+            </Paper>
+          </Grid.Col>
+          <Grid.Col span={{ base: 12, sm: 6, md: 4 }}>
+            <Paper p="md" shadow="xs" ta="center">
+              <Text fw={500}>Fitur Unggulan 3</Text>
+              <Text c="dimmed" fz="sm">Deskripsi singkat fitur 3.</Text>
+            </Paper>
+          </Grid.Col>
+        </Grid>
+      </Container>
+
+      {/* Testimoni Section */}
+      <Box bg="gray.1" py="xl">
         <Container>
-          <Grid>
-            <Grid.Col span={12}>
-              <Text c="white" ta="center">© 2025 MyBrand. All rights reserved.</Text>
-            </Grid.Col>
-          </Grid>
+          <Text ta="center" fw={700} fz="xl" mb="md">
+            Apa Kata Mereka?
+          </Text>
+          <Flex direction={{ base: 'column', md: 'row' }} gap="md" justify="center">
+            <Paper p="md" shadow="xs" maw={300} mx="auto">
+              <Text>"Produk ini sangat membantu bisnis saya!"</Text>
+              <Text c="dimmed" fz="sm" mt="sm">- Andi, CEO Startup</Text>
+            </Paper>
+            <Paper p="md" shadow="xs" maw={300} mx="auto">
+              <Text>"Fitur lengkap dan mudah digunakan."</Text>
+              <Text c="dimmed" fz="sm" mt="sm">- Siti, UMKM Owner</Text>
+            </Paper>
+            <Paper p="md" shadow="xs" maw={300} mx="auto">
+              <Text>"Supportnya sangat cepat dan responsif."</Text>
+              <Text c="dimmed" fz="sm" mt="sm">- Budi, Freelancer</Text>
+            </Paper>
+          </Flex>
         </Container>
       </Box>
-    </>
+
+      {/* CTA Section */}
+      <Container py="xl">
+        <Flex direction="column" align="center" gap="md">
+          <Text fw={700} fz="lg">Siap untuk mulai?</Text>
+          <Button size="lg">Daftar Sekarang</Button>
+        </Flex>
+      </Container>
+
+      {/* Footer */}
+      <Box bg="dark.7" c="gray.3" py="md">
+        <Container>
+          <Text ta="center" fz="sm">
+            &copy; 2025 Produk Hebat. All rights reserved.
+          </Text>
+        </Container>
+      </Box>
+    </Box>
   );
 }
 
