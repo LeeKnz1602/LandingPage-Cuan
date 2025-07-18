@@ -1,6 +1,5 @@
 import { Button, Container, Grid, Group, Image, Paper, Text, Title, Box } from '@mantine/core';
-import { link } from 'fs';
-import { Link, Links } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function LandingPage() {
   return (
