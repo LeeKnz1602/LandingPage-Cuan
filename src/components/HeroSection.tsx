@@ -44,11 +44,11 @@ export function HeroSection() {
           h="100%"
           style={{ zIndex: 2 }}
         >
-          {/* Cloud2 - Sebelah kiri */}
+          {/* Cloud2 */}
           <Box
             pos="absolute"
             top={isMobile ? '35%' : '1%'}
-            left={isMobile ? '-3%' : '-9%'}
+            left={isMobile ? '-3%' : '-6%'}
             w={isMobile ? '150px' : '170px'}
             style={{ zIndex: 2 }}
           >
@@ -61,9 +61,39 @@ export function HeroSection() {
             Main game, selesaikan misi, dan tukarkan poinmu untuk dijadikan keuntungan yang nyata.
             Ajak teman untuk meningkatkan penghasilanmu!
           </Text>
+          <Flex
+            direction={isMobile ? 'column' : 'row'}
+            gap="md"
+            justify="center"
+            align="center"
+            style={{ width: isMobile ? '100%' : 'auto' }}
+          >
+            <Button
+              variant="filled"
+              color="blue"
+              size={isMobile ? 'xs' : 'md'}
+              fullWidth={isMobile}
+              style={{ fontSize: isMobile ? '0.65rem' : undefined }}
+            >
+              Download CUAN Apk
+            </Button>
+            <Button
+              variant="subtle"
+              color="white"
+              size={isMobile ? 'xs' : 'md'}
+              fullWidth={isMobile}
+              style={{
+                fontSize: isMobile ? '0.65rem' : undefined,
+                border: '1px solid #ffffffff',
+                borderRadius: '4px',
+              }}
+            >
+              Download CUAN Apk
+            </Button>
+          </Flex>
         </Stack>
 
-        {/* Wrapper untuk Cloud dan NeoApp */}
+        {/* Wrapper Cloud dan NeoApp */}
         <Box
           pos="relative"
           w={isMobile ? '100%' : '50%'}
@@ -71,11 +101,11 @@ export function HeroSection() {
           mt={isMobile ? 'xl' : 0}
           mb={isMobile ? 'xl' : '25%'}
         >
-          {/* Cloud - Belakang NeoApp */}
+          {/* Cloud1 */}
           <Box
             pos="absolute"
             top={isMobile ? '35%' : '-30%'}
-            left={isMobile ? '55%' : '55%'}
+            left={isMobile ? '75%' : '55%'}
             w={isMobile ? '300px' : '400px'}
             style={{ zIndex: 1 }}
           >
@@ -85,11 +115,11 @@ export function HeroSection() {
           {/* NeoApp */}
           <Box
             pos="absolute"
-            top={isMobile ? '30%' : -'50%'}
-            left={isMobile ? '10%' : '-10%'}
+            top={isMobile ? '8%' : -'50%'}
+            left={isMobile ? '-21%' : '-10%'}
             style={{ zIndex: 3 }}
           >
-            <Image src={NeoApp} alt="CUAN App" w={isMobile ? '450px' : '630px'} h="auto" />
+            <Image src={NeoApp} alt="CUAN App" w={isMobile ? '480px' : '630px'} h="auto" />
           </Box>
         </Box>
       </Flex>

@@ -4,33 +4,39 @@ import Board from '../assets/board 1.png';
 import Cloud3 from '../assets/Cloud3.png';
 import Cloud4 from '../assets/Cloud4.png';
 import Appneo from '../assets/cuanApk2.png';
+import Island from '../assets/Tree.png';
 
 export function AboutSection({ id }: { id?: string }) {
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
-    <Container id={id} size="xl" py="xl">
-      <Flex direction={isMobile ? 'column' : 'row'} justify="center" mt="xl" pos="relative">
-        {/* Cloud4 di kiri */}
+    <Container id={id} size="xl" py="xl" pos="relative">
+      <Flex direction={isMobile ? 'column' : 'row'} justify="center" mt="xl">
+        {/* Cloud4 */}
         <Box
           pos="absolute"
           top={isMobile ? '30%' : '35%'}
-          left={isMobile ? '-10%' : '-9%'}
+          left={isMobile ? '-10%' : '-4%'}
           w={isMobile ? '200px' : '240px'}
           style={{ zIndex: 0 }}
         >
           <Image src={Cloud4} w="100%" h="auto" />
         </Box>
 
-        {/* Cloud3 di belakang */}
+        {/* Cloud3 */}
         <Box
           pos="absolute"
-          top={isMobile ? '35%' : '-15%'}
-          left={isMobile ? '30%' : '75%'}
+          top={isMobile ? '1%' : '-15%'}
+          left={isMobile ? '78%' : '75%'}
           w={isMobile ? '250px' : '350px'}
           style={{ zIndex: 0 }}
         >
           <Image src={Cloud3} w="100%" h="auto" />
+        </Box>
+
+        {/* Island */}
+        <Box pos="absolute" top="-45%" right="83%" w="270px" style={{ zIndex: 0 }}>
+          {!isMobile ? <Image src={Island} w="100%" h="auto" /> : undefined}
         </Box>
 
         {/* Appneo */}
@@ -47,8 +53,8 @@ export function AboutSection({ id }: { id?: string }) {
             top="45%"
             left="50%"
             style={{
-              transform: 'translate(-50%, -50%)',
-              width: isMobile ? '350px' : '550px',
+              transform: 'translate(-44%, -50%)',
+              width: isMobile ? '350px' : '450px',
               zIndex: 2,
               height: isMobile ? '400px' : undefined,
             }}
@@ -56,37 +62,48 @@ export function AboutSection({ id }: { id?: string }) {
         </Box>
 
         {/* Board */}
-        <Box pos="relative" w={isMobile ? '100%' : '750px'} h={isMobile ? '380px' : '100%'}>
-          <Image
-            src={Board}
-            alt="CUAN App"
-            w="100%"
-            h="100%"
-            style={{
-              objectFit: 'cover',
-              display: 'block',
-            }}
-          />
+        <Box
+          pos="relative"
+          w={isMobile ? '100%' : '700px'}
+          h={isMobile ? '100%' : '100%'}
+          style={{ overflow: 'auto' }}
+        >
+          <Image src={Board} alt="Board Background" w="100%" pos="relative" />
           <Box
             pos="absolute"
-            bottom={isMobile ? '20%' : '15%'}
-            left={isMobile ? '5%' : '30%'}
-            right={isMobile ? '5%' : 'auto'}
-            w={isMobile ? '90%' : '60%'}
-            p="lg"
-            style={{ borderRadius: '8px' }}
+            bottom={isMobile ? '0' : '15%'}
+            left={isMobile ? '0' : '24%'}
+            right={isMobile ? '0' : 'auto'}
+            style={{
+              transform: isMobile ? 'none' : 'translateX(1%)',
+              width: isMobile ? '100%' : '70%',
+              height: isMobile ? '100%' : '80%',
+              padding: isMobile ? '0.8rem' : '1.6rem',
+              boxSizing: 'border-box',
+            }}
           >
             <Title
               order={3}
               c="brown"
-              mb="md"
-              size="1.4rem"
-              ta={isMobile ? 'center' : 'left'}
-              style={{ fontSize: isMobile ? '1.2rem' : '1.7rem' }}
+              mb="sm"
+              ta="center"
+              pb={isMobile ? 'xs' : 'xl'}
+              style={{
+                fontSize: isMobile ? '0.85rem' : '1.5rem',
+                marginBottom: isMobile ? '0.5rem' : '1rem',
+              }}
             >
               Pengalaman Seru Bersama CUAN
             </Title>
-            <Text c="gray.6" size="md" mb="sm" ta={isMobile ? 'center' : 'left'} fw="bold">
+            <Text
+              c="gray.6"
+              fw="bold"
+              style={{
+                fontSize: isMobile ? '0.65rem' : '1rem',
+                marginBottom: isMobile ? '0.5rem' : '1rem',
+                textAlign: 'left',
+              }}
+            >
               Cuan menghadirkan cara yang aman dan ramah untuk pengguna dan mengelola token
               gaming-mu secara mudah, memberikan kontrol dan fleksibilitas lebih.
             </Text>
@@ -94,10 +111,11 @@ export function AboutSection({ id }: { id?: string }) {
               component="ul"
               style={{
                 color: 'gray',
-                paddingLeft: isMobile ? '1rem' : '1rem',
-                fontSize: '0.9rem',
-                textAlign: isMobile ? 'left' : 'justify',
-                marginBottom: '1rem',
+                paddingLeft: '1rem',
+                fontSize: isMobile ? '0.6rem' : '0.9rem',
+                textAlign: 'left',
+                marginBottom: '0.8rem',
+                listStylePosition: 'inside',
               }}
             >
               <li>Platform aman untuk mengelola poin gaming</li>
@@ -107,14 +125,35 @@ export function AboutSection({ id }: { id?: string }) {
                 dengan mudah
               </li>
             </Box>
-            <Button
-              variant="filled"
-              color="blue"
-              fullWidth={isMobile}
-              size={isMobile ? 'sm' : 'md'}
+            <Flex
+              direction={isMobile ? 'column' : 'row'}
+              gap="xs"
+              fz={isMobile ? 'sm' : 'md'}
+              style={{ width: '100%' }}
             >
-              Download CUAN Apk
-            </Button>
+              <Button
+                variant="filled"
+                color="blue"
+                size={isMobile ? 'xs' : 'sm'}
+                fullWidth
+                style={{ fontSize: isMobile ? '0.65rem' : 'inherit' }}
+              >
+                Download CUAN Apk
+              </Button>
+              <Button
+                variant="subtle"
+                color="blue.9"
+                size={isMobile ? 'xs' : 'sm'}
+                fullWidth
+                style={{
+                  fontSize: isMobile ? '0.65rem' : 'inherit',
+                  border: '1px solid #1c7ed6',
+                  borderRadius: '4px',
+                }}
+              >
+                Download CUAN Apk
+              </Button>
+            </Flex>
           </Box>
         </Box>
       </Flex>

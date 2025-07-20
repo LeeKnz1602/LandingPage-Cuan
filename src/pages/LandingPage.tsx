@@ -1,6 +1,7 @@
 import { Box } from '@mantine/core';
 import { Footer } from '@/components/Footer';
 import { NavigationPage } from '@/components/navbar';
+import Tree from '../assets/Tree.png';
 import { AboutSection } from '../components/AboutSection';
 import { ConnectSection } from '../components/ConnectSection';
 import { FAQSection } from '../components/FAQSection';
@@ -18,6 +19,7 @@ export function LandingPage() {
         width: '100%',
         background: 'linear-gradient(to bottom, #42B6C5 0%, #56CAE9 35%, #1FBFF8 64%, #055D7D 94%)',
         position: 'relative',
+        overflow: 'hidden',
       }}
     >
       <NavigationPage />

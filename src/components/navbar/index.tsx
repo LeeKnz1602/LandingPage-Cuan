@@ -20,9 +20,9 @@ export function NavigationPage() {
   return (
     <>
       <Flex
-        align="center"
+        align="flex-end"
         justify="space-between"
-        px="xl"
+        px="250x"
         style={{
           background: '#43b8c7d5',
           position: 'fixed',
@@ -49,7 +49,7 @@ export function NavigationPage() {
                   color="white"
                   variant="subtle"
                   fz="sm"
-                  px="md"
+                  px="lg"
                 >
                   {link.label}
                 </Button>
@@ -70,7 +70,7 @@ export function NavigationPage() {
                   color="white"
                   variant="subtle"
                   fz="sm"
-                  px="xs"
+                  px="xl"
                 >
                   {link.label}
                 </Button>
@@ -96,21 +96,34 @@ export function NavigationPage() {
           },
         }}
       >
-        <Flex direction="column" gap="sm" mt="xl">
-          {links.map((link) => (
-            <Button
-              key={link.label}
-              component={link.type === 'route' ? Link : 'a'}
-              to={link.type === 'route' ? link.href : undefined}
-              href={link.type === 'scroll' ? link.href : undefined}
-              variant="subtle"
-              fullWidth
-              onClick={toggle}
-              color="white"
-            >
-              {link.label}
-            </Button>
-          ))}
+        <Flex direction="column" gap="xs" mt="xs">
+          {links.map((link) =>
+            link.type === 'route' ? (
+              <Button
+                key={link.label}
+                component={Link}
+                to={link.href}
+                variant="subtle"
+                fullWidth
+                onClick={toggle}
+                color="white"
+              >
+                {link.label}
+              </Button>
+            ) : (
+              <Button
+                key={link.label}
+                component="a"
+                href={link.href}
+                variant="subtle"
+                fullWidth
+                onClick={toggle}
+                color="white"
+              >
+                {link.label}
+              </Button>
+            )
+          )}
         </Flex>
       </Drawer>
     </>
