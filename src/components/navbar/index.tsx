@@ -1,12 +1,16 @@
-import { Burger, Button, Drawer, Flex } from "@mantine/core";
-import { useDisclosure, useMediaQuery } from "@mantine/hooks";
+import { Link } from 'react-router-dom';
+import { Box, Burger, Button, Drawer, Flex, Group } from '@mantine/core';
+import { useDisclosure, useMediaQuery } from '@mantine/hooks';
+import logoCuan from '../../assets/CUAN-logo.png';
 
 const links = [
-  { label: 'ABOUT', href: '#about' },
-  { label: 'HOW IT WORKS', href: '#how-it-works' },
-  { label: 'FEATURES', href: '#features' },
-  { label: 'TESTIMONIALS', href: '#testimonials' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'ABOUT', href: '#about', type: 'scroll' },
+  { label: 'HOW IT WORKS', href: '#how-it-works', type: 'scroll' },
+  { label: 'FEATURES', href: '#features', type: 'scroll' },
+  { label: 'TESTIMONIALS', href: '#testimonials', type: 'scroll' },
+  { label: 'FAQ', href: '#faq', type: 'scroll' },
+  { label: 'LOGIN', href: '/login', type: 'route' },
+  { label: 'REGISTER', href: '/register', type: 'route' },
 ];
 
 export function NavigationPage() {
@@ -16,61 +20,92 @@ export function NavigationPage() {
   return (
     <>
       <Flex
-        h={isMobile ? '100vh' : '60px'}
-        w="100%"
-        justify={isMobile ? 'flex-start' : 'flex-end'}
         align="center"
-        direction={isMobile ? 'column' : 'row'}
-        wrap="nowrap"
-        px="md"
-        py="lg"
+        justify="space-between"
+        px="xl"
         style={{
-          background: '#72CED880',
-          position: isMobile ? 'relative' : 'fixed',
+          background: '#43b8c7d5',
+          position: 'fixed',
           top: 0,
+          width: '100%',
+          height: '74px',
           zIndex: 1000,
         }}
       >
-        {isMobile ? (
-          <Burger opened={opened} onClick={toggle} color="white" />
-        ) : (
-          <Flex direction="row" gap="md" align="center">
-            {links.map((link) => (
-              <Button 
-                component="a"
-                href={link.href}
-                color="white" 
-                variant="subtle" 
-                key={link.label}
-              >
-                {link.label}
-              </Button>
-            ))}
+        {/* Logo */}
+        <Box>
+          <img src={logoCuan} height={68} alt="CUAN logo" />
+        </Box>
+        {/* Desktop Menu */}
+        {!isMobile && (
+          <Flex justify="flex-end" align="center" style={{ flex: 1 }}>
+            {links
+              .filter((link) => link.type === 'scroll')
+              .map((link) => (
+                <Button
+                  key={link.label}
+                  component="a"
+                  href={link.href}
+                  color="white"
+                  variant="subtle"
+                  fz="sm"
+                  px="md"
+                >
+                  {link.label}
+                </Button>
+              ))}
           </Flex>
         )}
+
+        {/* Login/Register */}
+        {!isMobile && (
+          <Group gap="xl">
+            {links
+              .filter((link) => link.type === 'route')
+              .map((link) => (
+                <Button
+                  key={link.label}
+                  component={Link}
+                  to={link.href}
+                  color="white"
+                  variant="subtle"
+                  fz="sm"
+                  px="xs"
+                >
+                  {link.label}
+                </Button>
+              ))}
+          </Group>
+        )}
+
+        {/* Mobile Burger */}
+        {isMobile && <Burger opened={opened} onClick={toggle} color="white" />}
       </Flex>
+
+      {/* Drawer for Mobile */}
       <Drawer
         position="right"
         size="xs"
         opened={opened}
         onClose={toggle}
         title="Menu"
-        padding="md"
+        padding="xs"
         styles={{
           body: {
             background: '#43B7C7',
           },
         }}
       >
-        <Flex direction="column" gap="sm">
+        <Flex direction="column" gap="sm" mt="xl">
           {links.map((link) => (
-            <Button 
-              component="a"
-              href={link.href}
-              variant="subtle" 
-              fullWidth 
-              key={link.label} 
-              onClick={toggle} 
+            <Button
+              key={link.label}
+              component={link.type === 'route' ? Link : 'a'}
+              to={link.type === 'route' ? link.href : undefined}
+              href={link.type === 'scroll' ? link.href : undefined}
+              variant="subtle"
+              fullWidth
+              onClick={toggle}
               color="white"
             >
               {link.label}

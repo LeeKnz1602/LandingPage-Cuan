@@ -1,14 +1,14 @@
-import { NavigationPage } from '@/components/navbar';
 import { Box } from '@mantine/core';
-import { HeroSection } from '../components/HeroSection';
-import { AboutSection } from '../components/AboutSection';
-import { FeaturesSection } from '../components/FeaturesSection';
-import { HowItWorksSection } from '../components/HowItWorksSection';
-import { TestimonialsSection } from '../components/TestimonialsSection';
-import { FAQSection } from '../components/FAQSection';
-import { SupportSection } from '../components/SupportSection';
-import { ConnectSection } from '../components/ConnectSection';
 import { Footer } from '@/components/Footer';
+import { NavigationPage } from '@/components/navbar';
+import { AboutSection } from '../components/AboutSection';
+import { ConnectSection } from '../components/ConnectSection';
+import { FAQSection } from '../components/FAQSection';
+import { FeaturesSection } from '../components/FeaturesSection';
+import { HeroSection } from '../components/HeroSection';
+import { HowItWorksSection } from '../components/HowItWorksSection';
+import { SupportSection } from '../components/SupportSection';
+import { TestimonialsSection } from '../components/TestimonialsSection';
 
 export function LandingPage() {
   return (

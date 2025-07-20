@@ -12,11 +12,15 @@ export function FAQSection({ id }: { id?: string }) {
       <Accordion variant="contained">
         <Accordion.Item value="secure">
           <Accordion.Control>Is CUAN secure?</Accordion.Control>
-          <Accordion.Panel>Yes, CUAN uses advanced security measures to protect your data and transactions.</Accordion.Panel>
+          <Accordion.Panel>
+            Yes, CUAN uses advanced security measures to protect your data and transactions.
+          </Accordion.Panel>
         </Accordion.Item>
         <Accordion.Item value="tokens">
           <Accordion.Control>What can I do with my tokens on CUAN?</Accordion.Control>
-          <Accordion.Panel>You can convert them to cash, withdraw, or use them in games.</Accordion.Panel>
+          <Accordion.Panel>
+            You can convert them to cash, withdraw, or use them in games.
+          </Accordion.Panel>
         </Accordion.Item>
         <Accordion.Item value="start">
           <Accordion.Control>How do I get started?</Accordion.Control>
@@ -24,7 +28,9 @@ export function FAQSection({ id }: { id?: string }) {
         </Accordion.Item>
         <Accordion.Item value="missions">
           <Accordion.Control>What are daily missions?</Accordion.Control>
-          <Accordion.Panel>Daily tasks that reward you with points for completing them.</Accordion.Panel>
+          <Accordion.Panel>
+            Daily tasks that reward you with points for completing them.
+          </Accordion.Panel>
         </Accordion.Item>
         <Accordion.Item value="invite">
           <Accordion.Control>How do I invite friends?</Accordion.Control>
