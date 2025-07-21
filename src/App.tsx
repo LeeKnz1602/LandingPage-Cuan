@@ -1,8 +1,13 @@
 import { MantineProvider } from '@mantine/core';
-import { BrowserRouter, Routes, Route } from 'react-router-dom'; // Tambahkan import i
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LandingPage } from './pages/LandingPage';
 import { theme } from './theme';
-import { About } from './pages/About';
+
+// Import CSS Mantine Core
+import '@mantine/core/styles.css';
+
+// Import CSS Mantine Carousel - INI YANG MISSING!
+import '@mantine/carousel/styles.css';
 
 export default function App() {
   return (
@@ -10,7 +15,6 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </MantineProvider>

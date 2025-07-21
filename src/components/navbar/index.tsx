@@ -1,12 +1,15 @@
 import { Burger, Button, Drawer, Flex } from "@mantine/core";
 import { useDisclosure, useMediaQuery } from "@mantine/hooks";
+import { Link } from "react-router-dom";  // For full navigation on login/register
 
 const links = [
-  { label: 'ABOUT', href: '#about' },
-  { label: 'HOW IT WORKS', href: '#how-it-works' },
-  { label: 'FEATURES', href: '#features' },
-  { label: 'TESTIMONIALS', href: '#testimonials' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'ABOUT', href: '#about', type: 'scroll' },
+  { label: 'HOW IT WORKS', href: '#how-it-works', type: 'scroll' },
+  { label: 'FEATURES', href: '#features', type: 'scroll' },
+  { label: 'TESTIMONIALS', href: '#testimonials', type: 'scroll' },
+  { label: 'FAQ', href: '#faq', type: 'scroll' },
+  { label: 'LOGIN', href: '/login', type: 'route' },
+  { label: 'REGISTER', href: '/register', type: 'route' },
 ];
 
 export function NavigationPage() {
@@ -18,14 +21,14 @@ export function NavigationPage() {
       <Flex
         h={isMobile ? '100vh' : '60px'}
         w="100%"
-        justify={isMobile ? 'flex-start' : 'flex-end'}
+        justify={isMobile ? 'flex-start' : 'space-between'}  // Space-between to push Login/Register right
         align="center"
         direction={isMobile ? 'column' : 'row'}
         wrap="nowrap"
         px="md"
         py="lg"
         style={{
-          background: '#72CED880',
+          background: '#43B7C7',
           position: isMobile ? 'relative' : 'fixed',
           top: 0,
           zIndex: 1000,
@@ -34,19 +37,45 @@ export function NavigationPage() {
         {isMobile ? (
           <Burger opened={opened} onClick={toggle} color="white" />
         ) : (
-          <Flex direction="row" gap="md" align="center">
-            {links.map((link) => (
-              <Button 
-                component="a"
-                href={link.href}
-                color="white" 
-                variant="subtle" 
-                key={link.label}
-              >
-                {link.label}
-              </Button>
-            ))}
-          </Flex>
+          <>
+            {/* Centered Section Links */}
+            <Flex
+              direction="row"
+              gap="md"
+              align="center"
+              style={{ flex: 1, justifyContent: 'center' }}  // Center the links
+            >
+              {links
+                .filter(link => link.type === 'scroll')
+                .map((link) => (
+                  <Button 
+                    component="a"
+                    href={link.href}
+                    color="white" 
+                    variant="subtle" 
+                    key={link.label}
+                  >
+                    {link.label}
+                  </Button>
+                ))}
+            </Flex>
+            {/* Login/Register (Far Right) */}
+            <Flex direction="row" gap="md" align="center">
+              {links
+                .filter(link => link.type === 'route')
+                .map((link) => (
+                  <Button 
+                    component={Link}
+                    to={link.href}
+                    color="transparent" 
+                    variant="filled" 
+                    key={link.label}
+                  >
+                    {link.label}
+                  </Button>
+                ))}
+            </Flex>
+          </>
         )}
       </Flex>
       <Drawer
@@ -65,9 +94,10 @@ export function NavigationPage() {
         <Flex direction="column" gap="sm">
           {links.map((link) => (
             <Button 
-              component="a"
-              href={link.href}
-              variant="subtle" 
+              component={link.type === 'route' ? Link : 'a'}
+              to={link.type === 'route' ? link.href : undefined}
+              href={link.type === 'scroll' ? link.href : undefined}
+              variant={link.type === 'route' ? 'filled' : 'subtle'}
               fullWidth 
               key={link.label} 
               onClick={toggle} 
